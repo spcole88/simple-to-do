@@ -1,0 +1,60 @@
+body {
+    min-height: 100vh;
+    width: 100%;
+    background-image: url("img/desktop-background.png");
+    background-size: cover;
+    padding-top: 150px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+ul,
+ol {
+    font-family: "open sans", sans-serif;
+    color: black;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.to-do__container {
+    display: block;
+    box-sizing: border-box;
+    min-width: 300px;
+    max-width: 600px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px grey;
+}
+
+ul.to-do__list {
+    list-style-type: none;
+    padding-left: 0px;
+    transition: 0.3s all;
+}
+
+.to-do__add {
+    display: flex;
+    align-items: center;
+    cursor: default;
+    transition: 0.3s all;
+}
+
+.to-do__add img {
+    transform: translateY(-1px);
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+}
