@@ -21,14 +21,14 @@
                 <h2>To Do List</h2>
                 <ul class="to-do__list" id="to-do">
                     <li>
-                        <img class="to-do__checkbox" alt="checkbox" src="img/unchecked.jpg">
-                        <input type="text">
+                        <!-- Dont' like using this image in a button for the checkbox, will build a better version at some point instead of relying on aria roles, plus it's inside a button, that's not good -->
+                        <button class="to-do__checkbox"><img class="to-do__checkbox__img" alt="Checkbox" src="img/unchecked.jpg" role="checkbox" aria-checked="false"></button><input type="text" class="to-do__input"><button class="to-do__cross"><img alt="Delete to do item." src="img/cross.jpg"></button>
                     </li>
                 </ul>
-                <div id="to-do__add" class="to-do__add">
+                <button id="to-do__add" class="to-do__add">
                     <img alt="Add item" src="img/plus.jpg">
                     <p>Add item</p>
-                </div>
+                </button>
             </div>
         </div>
         <script src="script.js" async defer></script>

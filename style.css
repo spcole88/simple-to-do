@@ -1,3 +1,37 @@
+/**
+* Some button reset CSS taken from Normalize
+*/
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0px;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
 body {
     min-height: 100vh;
     width: 100%;
@@ -39,17 +73,39 @@ ol {
     box-shadow: 10px 10px 10px grey;
 }
 
+/**
+* List styling
+*/
 ul.to-do__list {
     list-style-type: none;
     padding-left: 0px;
     transition: 0.3s all;
 }
 
+ul.to-do__list li {
+    transition: 0.3s all;
+}
+
+.to-do__checkbox {
+    margin-right: 10px;
+}
+
+.to-do__input {
+    background-color: gray;
+}
+
+/**
+* Add item styling
+*/
+
 .to-do__add {
     display: flex;
     align-items: center;
     cursor: default;
     transition: 0.3s all;
+    background-color: transparent;
+    border: none;
+    border-radius: 0px;
 }
 
 .to-do__add img {
