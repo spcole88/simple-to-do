@@ -16,6 +16,22 @@ for (let cross of crosses) {
     cross.addEventListener("click", deleteToDoItem);
 }
 
+// Add an event listener to check for when enter key pressed to create a new to do item.
+// This will get all inputs and assign the event handler, in case for some reason there
+// is more than one at start up, which may be useful when I add localStorage functionality.
+var toDoInputs = document.getElementsByClassName("to-do__input");
+for (let input of toDoInputs) {
+    input.addEventListener("keydown", addItemOnEnter);
+}
+
+function addItemOnEnter(event) {
+    if (event.key == "Enter") {
+        addItemButton();
+    }
+    // Just in case, prevent any default usage
+    event.preventDefault();
+}
+
 function addItemButton() {
     let li = document.createElement("li");
 
@@ -51,8 +67,10 @@ function addItemButton() {
     toDo.appendChild(li);
 
     // Need to add event listeners to the checkbox and the cross element
+    // Also add event listener to the input to listen for enter presses
     checkboxButton.addEventListener("click", checkboxClicked);
     crossButton.addEventListener("click", deleteToDoItem);
+    input.addEventListener("keydown", addItemOnEnter);
 }
 
 function checkboxClicked(event) {

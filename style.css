@@ -86,6 +86,7 @@ ul.to-do__list li {
     transition: 0.3s all;
     display: flex;
     align-items: center;
+    margin-bottom: 8px;
 }
 
 .to-do__checkbox {
