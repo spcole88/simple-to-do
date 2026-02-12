@@ -84,6 +84,8 @@ ul.to-do__list {
 
 ul.to-do__list li {
     transition: 0.3s all;
+    display: flex;
+    align-items: center;
 }
 
 .to-do__checkbox {
@@ -91,7 +93,14 @@ ul.to-do__list li {
 }
 
 .to-do__input {
-    background-color: gray;
+    background-color: #f5f0f0;
+    padding: 8px;
+}
+
+.to-do__cross,
+.to-do__checkbox {
+    display: flex;
+    align-items: center;
 }
 
 /**
