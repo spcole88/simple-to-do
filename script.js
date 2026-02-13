@@ -27,9 +27,9 @@ for (let input of toDoInputs) {
 function addItemOnEnter(event) {
     if (event.key == "Enter") {
         addItemButton();
+        // Just in case, prevent any default usage
+        event.preventDefault();
     }
-    // Just in case, prevent any default usage
-    event.preventDefault();
 }
 
 function addItemButton() {
@@ -71,6 +71,9 @@ function addItemButton() {
     checkboxButton.addEventListener("click", checkboxClicked);
     crossButton.addEventListener("click", deleteToDoItem);
     input.addEventListener("keydown", addItemOnEnter);
+
+    // Now we want to move focus to the new list item ready for typing.
+    input.focus();
 }
 
 function checkboxClicked(event) {
@@ -89,5 +92,9 @@ function checkboxClicked(event) {
 }
 
 function deleteToDoItem(event) {
-    this.parentElement.remove();
+    const item = event.currentTarget.parentElement;
+    item.classList.add("remove-animation");
+    item.addEventListener("transitionend", () => {
+        item.remove();
+    });
 }
