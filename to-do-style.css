@@ -66,6 +66,7 @@ ol {
     display: block;
     box-sizing: border-box;
     max-width: 600px;
+    min-width: 200px;
     padding: 20px;
     background-color: white;
     border-radius: 5px;

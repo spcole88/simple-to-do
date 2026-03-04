@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -10,27 +10,15 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="to-do-style.css">
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div class="container">  
-            <div class="to-do__container">
-                <h2>To Do List</h2>
-                <ul class="to-do__list" id="to-do">
-                    <li>
-                        <!-- Dont' like using this image in a button for the checkbox, will build a better version at some point instead of relying on aria roles, plus it's inside a button, that's not good -->
-                        <button class="to-do__checkbox"><img class="to-do__checkbox__img" alt="Checkbox" src="img/unchecked.jpg" role="checkbox" aria-checked="false"></button><input type="text" class="to-do__input"><button class="to-do__cross"><img alt="Delete to do item." src="img/cross.jpg"></button>
-                    </li>
-                </ul>
-                <button id="to-do__add" class="to-do__add">
-                    <img alt="Add item" src="img/plus.jpg">
-                    <p>Add item</p>
-                </button>
-            </div>
+        <div class="container" id="to-do__main-container">  
+            
         </div>
-        <script src="script.js" async defer></script>
+        <script src="to-do-script.js" async defer></script>
     </body>
 </html>
