@@ -1,12 +1,12 @@
 /**
 * Some button reset CSS taken from Normalize
 */
-/*
-button,
-input,
-optgroup,
-select,
-textarea {
+
+#to-do__main-container button,
+#to-do__main-container input,
+#to-do__main-container optgroup,
+#to-do__main-container select,
+#to-do__main-container textarea {
   font-family: inherit;
   font-size: 100%;
   line-height: 1.15;
@@ -16,23 +16,36 @@ textarea {
   border-radius: 0px;
 }
 
-button,
-input {
+#to-do__main-container button,
+#to-do__main-container input {
   overflow: visible;
 }
 
-button,
-select {
+#to-do__main-container button,
+#to-do__main-container select {
   text-transform: none;
 }
 
-button,
+#to-do__main-container button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
 }
-  */
+
+#to-do__main-container h1,
+#to-do__main-container h2,
+#to-do__main-container h3,
+#to-do__main-container h4,
+#to-do__main-container h5,
+#to-do__main-container h6,
+#to-do__main-container p,
+#to-do__main-container a,
+#to-do__main-container ul,
+#to-do__main-container ol {
+    font-family: "open sans", sans-serif;
+    color: black;
+}
 
 .to-do__container {
     display: block;
