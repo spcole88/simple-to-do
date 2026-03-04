@@ -9,9 +9,6 @@ function addItemOnEnter(event) {
         // Just in case, prevent any default usage
         event.preventDefault();
     }
-
-    // Run storeItems() outside the if statement so our up to date to do list is always correct. This might be a problem performance wise?
-    storeItems();
 }
 
 function addItemButton() {
@@ -53,7 +50,8 @@ function addItemButton() {
     // Also add event listener to the input to listen for enter presses
     checkboxButton.addEventListener("click", checkboxClicked);
     crossButton.addEventListener("click", deleteToDoItem);
-    input.addEventListener("input", addItemOnEnter);
+    input.addEventListener("keydown", addItemOnEnter);
+    input.addEventListener("input", storeItems);
 
     // Now we want to move focus to the new list item ready for typing.
     input.focus();
@@ -211,6 +209,7 @@ function buildToDoItem(checked = "false", text = "") {
     // Also add event listener to the input to listen for enter presses
     checkboxButton.addEventListener("click", checkboxClicked);
     crossButton.addEventListener("click", deleteToDoItem);
-    input.addEventListener("input", addItemOnEnter);
+    input.addEventListener("keydown", addItemOnEnter);
+    input.addEventListener("input", storeItems);
 
 }

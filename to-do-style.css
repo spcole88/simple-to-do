@@ -82,7 +82,7 @@ ul.to-do__list li {
     width: auto;
     min-width: 50px;
     max-width: 600px;
-    background-color: #f5f0f0;
+    background-color: #f5f0f0 !important;
     padding: 8px;
 }
 
