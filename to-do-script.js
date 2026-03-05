@@ -1,7 +1,15 @@
+// Appempt to get template url which will be passed by WP via wp_localize_script
+const WP_BASE = (typeof toDoData !== "undefined" ? toDoData.templateUrl : "");
+
+// Build helping function to use in setting img paths instead of IF statements every time
+const getAssetPath = (path) => WP_BASE ? `${WP_BASE}/${path}` : path;
+
 // Starting the to do app and getting reference to the UL element to run the startToDoApp() function
 buildToDoContainer();
 var toDo = document.getElementById("to-do");
 startToDoApp();
+
+
 
 function addItemOnEnter(event) {
     if (event.key == "Enter") {
@@ -19,7 +27,7 @@ function addItemButton() {
     let checkboxButton = document.createElement("button");
     checkboxButton.classList = "to-do__checkbox";
     let img = document.createElement("img");
-    img.src = "img/unchecked.jpg";
+    img.src = getAssetPath("img/unchecked.jpg");
     img.alt = "Checkbox.";
     img.classList = "to-do__checkbox__img";
     img.setAttribute("role", "checkbox");
@@ -39,7 +47,7 @@ function addItemButton() {
     let crossButton = document.createElement("button");
     crossButton.classList = "to-do__cross";
     let crossImg = document.createElement("img");
-    crossImg.src = "img/cross.jpg";
+    crossImg.src = getAssetPath("img/cross.jpg");
     crossImg.alt = "Delete to do item.";
     crossButton.appendChild(crossImg);
     li.appendChild(crossButton);
@@ -65,10 +73,10 @@ function checkboxClicked(event) {
     let checked = checkboxImg.getAttribute("aria-checked");
 
     if (checked === "false") {
-        checkboxImg.src = "img/checked.jpg";
+        checkboxImg.src = getAssetPath("img/checked.jpg");
         checkboxImg.setAttribute("aria-checked", "true");
     } else if (checked === "true") {
-        checkboxImg.src = "img/unchecked.jpg";
+        checkboxImg.src = getAssetPath("img/unchecked.jpg");
         checkboxImg.setAttribute("aria-checked", "false");
     } else {
         console.log("Error handling checkbox image change.");
@@ -147,7 +155,7 @@ function buildToDoContainer() {
 
     var toDoAddItemButtonImg = document.createElement("img");
     toDoAddItemButtonImg.alt = "Add item";
-    toDoAddItemButtonImg.src = "img/plus.jpg";
+    toDoAddItemButtonImg.src = getAssetPath("img/plus.jpg");
     toDoAddItemButton.appendChild(toDoAddItemButtonImg);
 
     var toDoAddItemButtonText = document.createElement("p");
@@ -172,9 +180,9 @@ function buildToDoItem(checked = "false", text = "") {
     checkboxButton.classList = "to-do__checkbox";
     let img = document.createElement("img");
     if (checked === "true") {
-        img.src = "img/checked.jpg";
+        img.src = getAssetPath("img/checked.jpg");
     } else {
-        img.src = "img/unchecked.jpg";
+        img.src = getAssetPath("img/unchecked.jpg");
     }
     img.alt = "Checkbox.";
     img.classList = "to-do__checkbox__img";
@@ -198,7 +206,7 @@ function buildToDoItem(checked = "false", text = "") {
     let crossButton = document.createElement("button");
     crossButton.classList = "to-do__cross";
     let crossImg = document.createElement("img");
-    crossImg.src = "img/cross.jpg";
+    crossImg.src = getAssetPath("img/cross.jpg");
     crossImg.alt = "Delete to do item.";
     crossButton.appendChild(crossImg);
     li.appendChild(crossButton);
