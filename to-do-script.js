@@ -4,10 +4,27 @@ const WP_BASE = (typeof toDoData !== "undefined" ? toDoData.templateUrl : "");
 // Build helping function to use in setting img paths instead of IF statements every time
 const getAssetPath = (path) => WP_BASE ? `${WP_BASE}/${path}` : path;
 
-// Starting the to do app and getting reference to the UL element to run the startToDoApp() function
-buildToDoContainer();
-var toDo = document.getElementById("to-do");
-startToDoApp();
+function initApp() {
+    // Starting the to do app and getting reference to the UL element to run the startToDoApp() function
+    buildToDoContainer();
+
+    window.toDo = document.getElementById("to-do");
+
+    if (window.toDo) {
+        startToDoApp();
+    } else {
+        console.error("Could not locate the to-do list element.");
+    }
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initApp);
+} else {
+    initApp();
+}
+
+
+
 
 
 
@@ -17,55 +34,6 @@ function addItemOnEnter(event) {
         // Just in case, prevent any default usage
         event.preventDefault();
     }
-}
-
-function addItemButton() {
-    let li = document.createElement("li");
-    li.classList = "to-do__item";
-
-    // Create and append the checkbox button and its img element inside it
-    let checkboxButton = document.createElement("button");
-    checkboxButton.classList = "to-do__checkbox";
-    let img = document.createElement("img");
-    img.src = getAssetPath("img/unchecked.jpg");
-    img.alt = "Checkbox.";
-    img.classList = "to-do__checkbox__img";
-    img.setAttribute("role", "checkbox");
-    img.setAttribute("aria-checked", "false");
-    checkboxButton.appendChild(img);
-
-    // Now append the checbox button to the li element
-    li.appendChild(checkboxButton);
-
-    // Create and append the input text element
-    let input = document.createElement("input");
-    input.type = "text";
-    input.classList = "to-do__input";
-    li.appendChild(input);
-
-    // Create and append the cross element
-    let crossButton = document.createElement("button");
-    crossButton.classList = "to-do__cross";
-    let crossImg = document.createElement("img");
-    crossImg.src = getAssetPath("img/cross.jpg");
-    crossImg.alt = "Delete to do item.";
-    crossButton.appendChild(crossImg);
-    li.appendChild(crossButton);
-    
-    toDo.appendChild(li);
-
-    // Need to add event listeners to the checkbox and the cross element
-    // Also add event listener to the input to listen for enter presses
-    checkboxButton.addEventListener("click", checkboxClicked);
-    crossButton.addEventListener("click", deleteToDoItem);
-    input.addEventListener("keydown", addItemOnEnter);
-    input.addEventListener("input", storeItems);
-
-    // Now we want to move focus to the new list item ready for typing.
-    input.focus();
-
-    // Run storeItems() to update our localStorage
-    storeItems();
 }
 
 function checkboxClicked(event) {
@@ -168,14 +136,17 @@ function buildToDoContainer() {
     mainContainer.appendChild(toDoContainer);
 
     // Add event listener to the Add Item button
-    toDoAddItemButton.addEventListener("click", buildToDoItem);
+    toDoAddItemButton.addEventListener("click", () => buildToDoItem());
 }
 
 function buildToDoItem(checked = "false", text = "") {
+    if (typeof checked !== "string") checked = "false";
+
+    let toDo = document.getElementById("to-do");
     let li = document.createElement("li");
     li.classList = "to-do__item";
 
-    let itemContents = `
+    li.innerHTML = `
         <button class="to-do__checkbox">
             <img
                 alt="Checkbox"
@@ -195,15 +166,28 @@ function buildToDoItem(checked = "false", text = "") {
         </button>    
     `;
 
-    li.innerHTML = itemContents;
     toDo.appendChild(li);
 
     // Now add the event listeners, move focus, and run storeItems()
-    li.querySelector(".to-do__checkbox").addEventListener("click", checkboxClicked);
-    li.querySelector(".to-do__cross").addEventListener("click", deleteToDoItem);
-    const input = li.querySelector(".to-do__input");
-    input.addEventListener("keydown", addItemOnEnter);
-    input.addEventListener("input", storeItems);
-    input.focus();
+
+    let checkboxButton = li.querySelector(".to-do__checkbox");
+    let deleteButton = li.querySelector(".to-do__cross");
+    let input = li.querySelector(".to-do__input");
+
+    if (checkboxButton) checkboxButton.addEventListener("click", checkboxClicked);
+    if (deleteButton) deleteButton.addEventListener("click", deleteToDoItem);
+    if (input) {
+        input.addEventListener("keydown", addItemOnEnter);
+        input.addEventListener("input", storeItems);
+        input.focus();
+    }
+
+    //li.querySelector(".to-do__checkbox").addEventListener("click", checkboxClicked);
+    //li.querySelector(".to-do__cross").addEventListener("click", deleteToDoItem);
+    //const input = li.querySelector(".to-do__input");
+    //input.addEventListener("keydown", addItemOnEnter);
+    //input.addEventListener("input", storeItems);
+    //input.focus();
+    
     storeItems();
 }
