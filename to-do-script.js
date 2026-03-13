@@ -2,7 +2,7 @@
 const WP_BASE = (typeof toDoData !== "undefined" ? toDoData.templateUrl : "");
 
 // Build helping function to use in setting img paths instead of IF statements every time
-const getAssetPath = (path) => WP_BASE ? `${WP_BASE}/${path}` : path;
+const getAssetPath = (path) => WP_BASE ? `${WP_BASE}/assets/to-do/${path}` : path;
 
 function initApp() {
     // Starting the to do app and getting reference to the UL element to run the startToDoApp() function
